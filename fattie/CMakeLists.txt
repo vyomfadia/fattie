@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.28)
+project(fattie VERSION 0.1 LANGUAGES CXX)
+
+include(cmake/CPM.cmake)
+
+file(GLOB_RECURSE FATTIE_HEADERS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp")
+file(GLOB_RECURSE FATTIE_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+
+add_executable(${PROJECT_NAME} ${FATTIE_HEADERS} ${FATTIE_SOURCES})
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 20)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
